@@ -1,11 +1,24 @@
-# React + Vite
+# ✅ To Do List App ➔ Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies utilisées
 
-Currently, two official plugins are available:
+*  ⚛️[React](https://react.dev/learn/build-a-react-app-from-scratch)
+*  ⚡[Vite](https://vitejs.fr/guide/)
+*  🌬️[Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation et lancement
+
+Suivez ces étapes pour mettre en place l'environnement de développement et lancer le projet.
+
+**1. Cloner le dépôt**
+```bash
+git clone https://github.com/LinaIsabelLH//todolist-frontend.git
+cd todolist-frontend
+```
+**2. Installer les dépendances**
+```bash
+npm install
+```
 
 ## Expanding the ESLint configuration
 
