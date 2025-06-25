@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import {
   fetchCategories,
   addCategory,
-  updateCategory,
   deleteCategory,
 } from "../api/categories";
 
