@@ -7,13 +7,10 @@ import {
 
 export default function useCategories() {
   const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   const loadCategories = async () => {
-    setIsLoading(true);
     const res = await fetchCategories();
     setCategories(res.data);
-    setIsLoading(false);
   };
 
   const createCategory = async (category) => {
@@ -32,7 +29,6 @@ export default function useCategories() {
 
   return {
     categories,
-    isLoading,
     createCategory,
     removeCategory,
   };

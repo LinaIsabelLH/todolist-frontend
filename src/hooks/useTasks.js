@@ -3,10 +3,13 @@ import { fetchTasks, addTask, updateTask, deleteTask } from "../api/tasks";
 
 export default function useTasks() {
     const [tasks, setTasks]=useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const loadTasks =async() =>{
+        setIsLoading(true);
         const res = await fetchTasks();
-        setTasks(res.data)
+        setTasks(res.data);
+        setIsLoading(false);
     };
 
     const createTask = async(task) =>{
@@ -29,5 +32,5 @@ export default function useTasks() {
         loadTasks();
   }, []);
 
-  return {tasks, loadTasks, createTask, editTask, removeTask};
+  return {tasks, isLoading, loadTasks, createTask, editTask, removeTask};
 }

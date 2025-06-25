@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
-import { addTask } from "../api/tasks";
-import {fetchCategories} from "../api/categories"
 
-const TasksForm = ()=>{
+
+const TasksForm = ({categories, createTask, isLoading})=>{
+  const [newTask, setNewTask]=useState("");
+  const [catTask, setCatTask]= useState("");
+
+  const handleSubmitTask =()=>{
+
+
+  }
+
+
     return (
-      <div className="flex flex-row justify-center m-4 pl-4">
+      <form onSubmit={handleSubmitTask} className="flex flex-row justify-center m-4 pl-4">
         <input
           type="text"
+          value={newTask}
+          onChange={(e)=>setNewTask(e.target.value)}
           placeholder="Nouvelle tâche"
           className="border rounded-lg border-gray-600 bg-white  p-2 mx-4 min-w-[335px]"
         />
@@ -16,7 +26,7 @@ const TasksForm = ()=>{
         <button className="bg-indigo-500 text-zinc-100 font-bold p-2 rounded-lg mx-4 min-w-[160px]">
           Ajouter une tâche
         </button>
-      </div>
+      </form>
 
     )
 }
