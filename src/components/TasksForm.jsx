@@ -6,8 +6,7 @@ const TasksForm = ({categories, createTask, isLoading})=>{
   const [catTask, setCatTask]= useState("");
 
   const handleSubmitTask =()=>{
-
-
+    createTask(newTask);
   }
 
 
