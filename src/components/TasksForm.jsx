@@ -1,18 +1,7 @@
 import { useState } from "react";
 
 const TasksForm = ({ categories, createTask }) => {
-  const [newTask, setNewTask] = useState({ description: "", category: "" });
-
-  const handleSubmitTask = (e) => {
-    e.preventDefault();
-    if (!newTask.description.trim() || !newTask.category) {
-      alert("Veuillez rentrer une tâche et choisir une catégorie");
-      return;
-    }
-
-    createTask(newTask);
-    setNewTask({ description: "", category: "" });
-  };
+  const [newTask, setNewTask] = useState({ description: "", category_id: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +9,17 @@ const TasksForm = ({ categories, createTask }) => {
       ...prevTask,
       [name]: value,
     }));
+  };
+
+  const handleSubmitTask = (e) => {
+    e.preventDefault();
+    if (!newTask.description.trim() || !newTask.category_id) {
+      alert("Veuillez rentrer une tâche et choisir une catégorie");
+      return;
+    }
+
+    createTask(newTask);
+    setNewTask({ description: "", category_id: "" });
   };
 
   return (
@@ -34,19 +34,23 @@ const TasksForm = ({ categories, createTask }) => {
         onChange={handleChange}
         placeholder="Nouvelle tâche"
         className="border rounded-lg border-gray-600 bg-white  p-2 mx-4 min-w-[335px]"
+        required
       />
       <select
+        name="category_id"
+        value={newTask.category_id}
         onChange={handleChange}
         className="border rounded-lg border-gray-600 bg-white p-2 "
+        required
       >
         <option value="" disabled>
           Choisir une catégorie
         </option>
         {categories &&
-          categories.map((cat) => {
+          categories.map((category) => {
             return (
-              <option key={cat.i} value={cat.id}>
-                {cat.name}
+              <option key={category.i} value={category.id}>
+                {category.name}
               </option>
             );
           })}
