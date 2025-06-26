@@ -8,9 +8,8 @@ const CategorySelect = ({
     onCategoryChange(e.target.value);
   };
 
-  const handleRemove = (e) => {
-    e.preventDefault();
-    removeCategory(e.target.value);
+  const handleRemove = (id) => {
+    removeCategory(id);
   };
 
   return (
@@ -27,16 +26,20 @@ const CategorySelect = ({
         {categories &&
           categories.map((cat) => {
             return (
-              <option key={cat.id} value={cat.id}>
-                {cat.name}
-                <button
-                  value={cat.id}
-                  onClick={handleRemove}
-                  className="font-semibold"
-                >
-                  X
-                </button>
-              </option>
+              <div key={cat.id} className="min-w-[700px]">
+                <option  value={cat.id} className="">
+                  {cat.name}
+                  <button
+                    value={cat.id}
+                    onClick={() => {
+                      handleRemove(cat.id);
+                    }}
+                    className="font-semibold min-w-[10px]"
+                  >
+                    X
+                  </button>
+                </option>
+              </div>
             );
           })}
       </select>
@@ -45,3 +48,4 @@ const CategorySelect = ({
 };
 
 export default CategorySelect;
+
