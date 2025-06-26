@@ -5,11 +5,23 @@ import CategorySelect from "./components/CategorySelect";
 import CategoryForm from "./components/CategoryForm";
 import useCategories from "./hooks/useCategories";
 import useTasks from "./hooks/useTasks";
+import { useState } from "react";
 
 function App() {
   const { createCategory, removeCategory, categories } = useCategories();
   const { tasks, isLoading, loadTasks, createTask, editTask, removeTask } =
     useTasks();
+
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  const filteredTasks = () => {
+    tasks.filter((task) => {
+      if (task === "all") {
+        return true;
+      }
+      return task.category.toString() === selectedCategory;
+    });
+  };
 
   return (
     <div>
@@ -19,18 +31,19 @@ function App() {
         <CategorySelect
           categories={categories}
           removeCategory={removeCategory}
+          onCategoryChange={setSelectedCategory}
         />
-        <TasksForm
-          categories={categories}
-          createTask={createTask}
-          isLoading={isLoading}
-        />
-        <TaskList
-          tasks={tasks}
-          loadTasks={loadTasks}
-          editTask={editTask}
-          removeTask={removeTask}
-        />
+        <TasksForm categories={categories} createTask={createTask} />
+        {isLoading ? (
+          <p>Chargement des tâches ...</p>
+        ) : (
+          <TaskList
+            tasks={filteredTasks}
+            loadTasks={loadTasks}
+            editTask={editTask}
+            removeTask={removeTask}
+          />
+        )}
       </div>
     </div>
   );

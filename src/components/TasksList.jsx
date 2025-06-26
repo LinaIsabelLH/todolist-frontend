@@ -1,26 +1,44 @@
-import { useEffect, useState } from "react";
+const TaskList = ({ tasks, editTask, removeTask }) => {
+  const handleTaskStatus = (task) => {
+    editTask(task.id, { is_completed: !task.is_completed });
+  };
 
+  const handleDelete = (id) => {
+    removeTask(id);
+  };
 
-const TaskList= ()=> {
-  const [tasks, setTasks] = useState([]);
-
+  // Si aucune tâche n'est à afficher, on peut montrer un message
+  if (!tasks || tasks.length === 0) {
+    return <p className="text-gray-500 mt-4">Aucune tâche à afficher.</p>;
+  }
 
   return (
-  
-    <ul className="space-y-2">
+    <ul className="space-y-3 w-full max-w-xl mt-4">
       {tasks.map((task) => (
-        <li key={task.id} className="flex justify-between items-center p-2 bg-white shadow rounded">
-          <input type="checkbox" className={task.is_completed ? "line-through text-gray-400" : ""}>
-            {task.description}
-          </input>
+        <li
+          key={task.id}
+          className="flex justify-between items-center p-3 bg-white shadow-md rounded-lg"
+        >
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              checked={task.is_completed}
+              onChange={() => handleTaskStatus(task)}
+              className="h-5 w-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mr-3"
+            />
+            <span
+              className={task.is_completed ? "line-through text-gray-400" : ""}
+            >
+              {task.description}
+            </span>
+          </div>
           <div>
-            <button onClick={() => handleUpdate(task.id, task.is_completed)} className="text-sm text-green-600 mr-2">✓</button>
-            <button onClick={() => handleDelete(task.id)} className="text-sm text-red-600">🗑</button>
+            <button onClick={() => handleDelete(task.id)}>🗑️</button>
           </div>
         </li>
       ))}
     </ul>
   );
-}
+};
 
 export default TaskList;

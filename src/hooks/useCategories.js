@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import {
+  fetchOneCategory,
   fetchCategories,
   addCategory,
   deleteCategory,
@@ -12,6 +13,11 @@ export default function useCategories() {
     const res = await fetchCategories();
     setCategories(res.data);
   };
+
+  const loadOneCategory = async(id)=>{
+    const res = await fetchOneCategory(id);
+    return res.data
+  }
 
   const createCategory = async (category) => {
     const res = await addCategory(category);
@@ -28,6 +34,8 @@ export default function useCategories() {
   }, []);
 
   return {
+    loadCategories,
+    loadOneCategory,
     categories,
     createCategory,
     removeCategory,
