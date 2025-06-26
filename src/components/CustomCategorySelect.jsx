@@ -41,11 +41,11 @@ const CustomCategorySelect = ({ categories, selectedCategory, onCategoryChange, 
   }, [wrapperRef]);
 
   return (
-    <div ref={wrapperRef} className="relative w-full max-w-md">
+    <div ref={wrapperRef} className="relative min-w-[718px] ml-4">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-white border border-gray-400 rounded-lg p-2 text-left flex justify-between items-center"
+        className="w-full bg-white border border-gray-400 rounded-lg p-2 text-left flex justify-between items-center "
       >
         <span>{getCategorySelected()}</span>
         <span className="pointer-events-none">▼</span>

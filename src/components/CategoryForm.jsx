@@ -20,7 +20,7 @@ const CategoryForm = ({createCategory}) => {
         placeholder="Nouvelle catégorie"
         className="border rounded-lg border-gray-600 bg-white p-2 mx-4 min-w-[500px]"
       />
-      <button type="submit" className="bg-indigo-500 text-zinc-100 font-bold p-2 rounded-lg min-w-[199px]">
+      <button type="submit" className="bg-indigo-500 text-zinc-100 font-bold p-2 rounded-lg min-w-[202px]">
         Ajouter une catégorie
       </button>
     </form>
