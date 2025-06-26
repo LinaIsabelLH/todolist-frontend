@@ -1,4 +1,5 @@
 const TaskList = ({ tasks, editTask, removeTask }) => {
+  
   const handleTaskStatus = (task) => {
     editTask(task.id, { is_completed: !task.is_completed });
   };
