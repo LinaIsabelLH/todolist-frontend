@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
 const CustomCategorySelect = ({ categories, selectedCategory, onCategoryChange, removeCategory }) => {
-  // État pour savoir si le menu est ouvert ou fermé
   const [isOpen, setIsOpen] = useState(false);
   
   // Ref pour détecter les clics en dehors du composant
